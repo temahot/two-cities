@@ -1,3 +1,4 @@
+import en from './assets/locales/en.json'
 export default {
   mode: 'spa',
   /*
@@ -38,7 +39,17 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['nuxt-i18n'],
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en
+      }
+    }
+  },
   /*
    ** Build configuration
    */
