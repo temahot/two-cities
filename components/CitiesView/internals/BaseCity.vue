@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       content: {
-        name: this.isMobile ? 'msc' : 'Moscow',
+        name: this.isMobile ? 'MSC' : 'Moscow',
         caption: 'city of vodka',
         description:
           'Hey, Lorem ipsum dolor sit amet, consectetur adipisicing elit,\n sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'components/style/sizes.scss';
+@import '~assets/styles/sizes.scss';
 $transition-duration: 0.3s;
 
 .city {
