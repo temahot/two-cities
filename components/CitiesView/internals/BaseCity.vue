@@ -67,7 +67,8 @@ $transition-duration: 0.3s;
   p {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.6s linear;
+    transition: visibility 0s, opacity $transition-duration linear;
+    transition: font-size 0.5s;
   }
   &__info-element-close {
     visibility: hidden;
@@ -76,7 +77,7 @@ $transition-duration: 0.3s;
     display: none;
   }
   &__info-element-content {
-    transition: margin $transition-duration ease-in-out;
+    transition: font-size 0.5s;
     font-size: 50px;
     color: white !important;
   }

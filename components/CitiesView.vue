@@ -6,6 +6,7 @@
       class="city--left"
       @click.native="toggleLeft"
     />
+
     <right-city
       :isMobile="isMobile"
       :isActive="isRightCityActive"
@@ -16,7 +17,6 @@
 </template>
 
 <script>
-import { isMobile } from 'mobile-device-detect'
 import LeftCity from './CitiesView/internals/LeftCity.vue'
 import RightCity from './CitiesView/internals/RightCity.vue'
 
@@ -33,8 +33,7 @@ export default {
   },
   data() {
     return {
-      activeCity: activeCitiesState.NONE,
-      isMobile
+      activeCity: activeCitiesState.NONE
     }
   },
   computed: {
@@ -43,6 +42,13 @@ export default {
     },
     isRightCityActive() {
       return this.activeCity === activeCitiesState.RIGHT
+    },
+    isMobile() {
+      if (screen.width <= 600) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   methods: {
