@@ -8,17 +8,17 @@
         alt="close"
       />
       <h3 align="center" class="city__info-element-content-mobile">
-        {{content.name}}
-        <span class="city__info-element-caption">{{content.caption}}</span>
+        {{ $t(content.name) }}
+        <span class="city__info-element-caption">{{$t(content.caption)}}</span>
       </h3>
       <h3 align="center" class="city__info-element-content">
-        {{ isMobile ? content.shortname : content.name}}
+        {{ $t(titleText)}}
         <span
           class="city__info-element-caption"
-        >{{content.caption}}</span>
+        >{{$t(content.caption)}}</span>
       </h3>
     </div>
-    <p class="city__info-element-description">{{content.description}}</p>
+    <p class="city__info-element-description">{{$t(content.description)}}</p>
     <img class="city__photo" :src="content.backgroundUrl" :alt="content.placeTitle" />
   </div>
 </template>
@@ -46,6 +46,9 @@ export default {
         backgroundUrl: null
       }
     }
+  },
+  computed: {
+    titleText(){return this.isMobile ? this.content.shortname : this.content.name}
   }
 }
 </script>
@@ -53,6 +56,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/styles/sizes.scss';
 $transition-duration: 0.3s;
+$color-white: #fff;
 
 .city {
   overflow: hidden;
@@ -79,7 +83,7 @@ $transition-duration: 0.3s;
   &__info-element-content {
     transition: font-size 0.5s;
     font-size: 50px;
-    color: white !important;
+    color: $color-white !important;
   }
 
   &__info-element-caption {
@@ -130,7 +134,7 @@ $transition-duration: 0.3s;
       margin-top: 100px;
       margin-left: 90px;
       text-align: left;
-      color: white;
+      color: $color-white;
       font-size: 21px;
     }
     p {
@@ -141,7 +145,7 @@ $transition-duration: 0.3s;
       font-size: 42px;
       line-height: 1em;
       font-weight: bold;
-      color: white;
+      color: $color-white;
       white-space: pre-wrap;
     }
   }
@@ -155,7 +159,7 @@ $transition-duration: 0.3s;
   .city {
     &__info-element-content {
       font-size: 30px;
-      color: white !important;
+      color: $color-white !important;
     }
     &__info-element-caption {
       display: block;
@@ -206,7 +210,7 @@ $transition-duration: 0.3s;
         display: block;
         font-size: 30px;
         font-weight: bold;
-        color: white;
+        color: $color-white;
         white-space: pre-wrap;
       }
     }
