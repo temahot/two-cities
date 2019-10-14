@@ -29,6 +29,4 @@ export default {
     object-position: left;
   }
 }
-@media (max-width: 600px) {
-}
 </style>

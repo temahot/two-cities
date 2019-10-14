@@ -46,18 +46,14 @@ export default {
         backgroundUrl: null
       }
     }
-  },
-  mounted() {
-    window.addEventListener('resize', () => {
-      console.log('le')
-      console.log(window.innerHeight)
-    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import 'components/style/sizes.scss';
 $transition-duration: 0.3s;
+
 .city {
   overflow: hidden;
   position: absolute;
@@ -69,8 +65,10 @@ $transition-duration: 0.3s;
   cursor: url('~assets/cursor_hover_enter.svg'), auto;
   z-index: 0;
   p {
-    white-space: pre-wrap;
-    display: none;
+    //display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.6s linear;
   }
   &__info-element-close {
     visibility: hidden;
@@ -136,13 +134,16 @@ $transition-duration: 0.3s;
       font-size: 21px;
     }
     p {
+      visibility: visible;
+      opacity: 1;
       margin-top: 70px;
       margin-left: 70px;
-      display: block;
+      //display: block;
       font-size: 42px;
       line-height: 1em;
       font-weight: bold;
       color: white;
+      white-space: pre-wrap;
     }
   }
 
@@ -151,7 +152,7 @@ $transition-duration: 0.3s;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: $mobile) {
   .city {
     &__info-element-content {
       font-size: 30px;
@@ -200,7 +201,6 @@ $transition-duration: 0.3s;
       width: 100%;
 
       p {
-        //letter-spacing: -2.7px;
         line-height: 1.3em;
         margin-top: 30px;
         margin-left: 30px;
@@ -208,6 +208,7 @@ $transition-duration: 0.3s;
         font-size: 30px;
         font-weight: bold;
         color: white;
+        white-space: pre-wrap;
       }
     }
   }
