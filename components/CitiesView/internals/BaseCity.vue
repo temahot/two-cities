@@ -13,9 +13,7 @@
       </h3>
       <h3 align="center" class="city__info-element-content">
         {{ $t(titleText)}}
-        <span
-          class="city__info-element-caption"
-        >{{$t(content.caption)}}</span>
+        <span class="city__info-element-caption">{{$t(content.caption)}}</span>
       </h3>
     </div>
     <p class="city__info-element-description">{{$t(content.description)}}</p>
@@ -48,7 +46,9 @@ export default {
     }
   },
   computed: {
-    titleText(){return this.isMobile ? this.content.shortname : this.content.name}
+    titleText() {
+      return this.isMobile ? this.content.shortname : this.content.name
+    }
   }
 }
 </script>
@@ -68,28 +68,7 @@ $color-white: #fff;
   transition: $transition-duration all;
   cursor: url('~assets/cursor_hover_enter.svg'), auto;
   z-index: 0;
-  p {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity $transition-duration linear;
-    transition: font-size 0.5s;
-  }
-  &__info-element-close {
-    visibility: hidden;
-  }
-  &__info-element-content-mobile {
-    display: none;
-  }
-  &__info-element-content {
-    transition: font-size 0.5s;
-    font-size: 50px;
-    color: $color-white !important;
-  }
-
-  &__info-element-caption {
-    font-weight: 300;
-  }
-  .city__info-element-title {
+  &__info-element-title {
     &:after {
       width: 0%;
       background-repeat: no-repeat;
@@ -101,7 +80,29 @@ $color-white: #fff;
       transition: width 0.3s ease-in-out;
       opacity: 0;
     }
+    .city__info-element-close {
+      visibility: hidden;
+    }
+    .city__info-element-content {
+      transition: font-size 0.5s;
+      font-size: 50px;
+      color: $color-white;
+      .city__info-element-caption {
+        font-weight: 300;
+      }
+    }
+    .city__info-element-content-mobile {
+      display: none;
+    }
   }
+
+  p {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity $transition-duration linear;
+    transition: font-size 0.5s;
+  }
+
   &__photo {
     transition: $transition-duration;
     position: absolute;
@@ -112,6 +113,7 @@ $color-white: #fff;
     z-index: -1;
     transform: scale(1.035);
   }
+
   &:hover,
   &--active {
     .city__photo {
@@ -121,22 +123,24 @@ $color-white: #fff;
   }
 
   &--active {
+    z-index: 1;
+    cursor: url('~assets/cursor_hover.svg'), auto;
+    width: 75%;
     .city__info-element-title {
       &:after {
         opacity: 1;
         width: 100%;
+        background-repeat: no-repeat;
+      }
+      .city__info-element-content {
+        margin-top: 100px;
+        margin-left: 90px;
+        text-align: left;
+        color: $color-white;
+        font-size: 21px;
       }
     }
-    z-index: 1;
-    cursor: url('~assets/cursor_hover.svg'), auto;
-    width: 75%;
-    .city__info-element-content {
-      margin-top: 100px;
-      margin-left: 90px;
-      text-align: left;
-      color: $color-white;
-      font-size: 21px;
-    }
+
     p {
       visibility: visible;
       opacity: 1;
@@ -157,51 +161,57 @@ $color-white: #fff;
 
 @media (max-width: $mobile) {
   .city {
-    &__info-element-content {
-      font-size: 30px;
-      color: $color-white !important;
-    }
-    &__info-element-caption {
-      display: block;
-      font-size: 20px;
-    }
-    &__info-element-content-mobile {
-      display: none;
-      transition: display 0.3s ease-in-out;
-    }
-    &--active {
-      .city__info-element-close {
-        visibility: visible;
-        position: absolute;
-        margin-left: 80%;
-        margin-top: 5px;
-      }
-      .city__info-element-content-mobile {
-        display: block;
-        margin-top: 30px;
-        margin-left: 30px;
-        text-align: left;
-        color: white;
-        font-size: 18px;
-      }
-      .city__info-element-caption {
-        display: unset !important;
-        font-size: 20px;
-      }
+    &__info-element-title {
       .city__info-element-content {
-        display: none;
+        font-size: 30px;
+        color: $color-white;
+        .city__info-element-caption {
+          display: block;
+          font-size: 20px;
+          font-weight: 300;
+        }
       }
+      &__info-element-content-mobile {
+        display: none;
+        transition: display 0.3s ease-in-out;
+      }
+    }
+
+    &--active {
+      z-index: 1;
+      cursor: url('~assets/cursor_hover.svg'), auto;
+      width: 100%;
       .city__info-element-title {
         &:after {
+          background-repeat: no-repeat;
           opacity: 1;
           width: 100%;
           margin-top: -10px;
           margin-left: 30px;
         }
+        .city__info-element-close {
+          visibility: visible;
+          position: absolute;
+          margin-left: 80%;
+          margin-top: 5px;
+        }
+        .city__info-element-content {
+          display: none;
+        }
+        .city__info-element-content-mobile {
+          display: block;
+          margin-top: 30px;
+          margin-left: 30px;
+          text-align: left;
+          color: white;
+          font-size: 18px;
+          .city__info-element-caption {
+            display: unset;
+            font-size: 20px;
+            font-weight: 300;
+          }
+        }
       }
-      z-index: 1;
-      cursor: url('~assets/cursor_hover.svg'), auto;
-      width: 100%;
 
       p {
         line-height: 1.3em;
